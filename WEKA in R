@@ -1,0 +1,38 @@
+#file:///home/solo/Desktop/R/Rweka_code.R
+################### Neural Network with RWeka ###################
+
+# install Rweka
+install.packages("RWeka", dependencies = TRUE)
+install.packages("RWekajars")
+# load the package
+library(RWeka)
+
+# Set working directory          
+setwd("C:/Users/Solo/Desktop/R")
+                
+# load sample data
+iris <- read.arff(system.file("arff", "iris.arff", package = "RWeka"))
+
+# classify KNN clustering
+
+classifier <- IBk(class ~., data = iris)
+summary(classifier)
+
+#  Other things to do
+classifier <- IBk(class ~ ., data = iris, 
+control = Weka_control(K = 20, X = TRUE))
+evaluate_Weka_classifier(classifier, numFolds = 10)
+
+classifier
+
+# tree?
+classifier_j48 <- J48(class ~., data = iris)
+summary(classifier_j48)
+                
+
+                
+# Delete variables with exact names
+                rm (classifier2)
+                rm(classifier_j48)
+                
+                
