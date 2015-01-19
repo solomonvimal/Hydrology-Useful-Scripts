@@ -1,0 +1,25 @@
+## discharge flow data filter of (zeros) in the series
+# filename<-read.table(file="file.txt",skip=1)
+# filename[,1]<-as.character(filename[,1])
+# filename[,1]<-as.Date(filename[,1],"%m/%d/%Y")
+##filename[,1]<-as.character(filename[,1])  ## if the entry are as Date if we did not define the column 1 as :date will have an error
+
+
+zerofilter<-function(matrix)   {
+outputmatrix<-array(NA,dim=c(NROW(matrix),2));
+dischargeaverage<-mean(matrix[1:NROW(matrix),2],na.rm=TRUE)
+outputmatrix<-as.data.frame(outputmatrix)
+outputmatrix[,1]<-matrix[,1];
+outputmatrix[,2]<-matrix[,2];
+##print(dischargeaverage)
+for(i in 2:(NROW(matrix)-1))      {
+if (matrix[i,2]<=dischargeaverage/4)  {
+   if ((matrix[i,2]<=(matrix[(i-1),2]/4)) && (matrix[i,2]<=(matrix[(i+1),2]/4))) {
+ outputmatrix[i,2]<-(matrix[i-1,2]+matrix[i+1,2])/2
+                                                                             } 
+                                      }
+                                   }
+return(outputmatrix)
+                               }  
+                    
+filtered_filename<-zerofilter(filename)
