@@ -1,5 +1,5 @@
 
-% This code creates specific file names, searches for them in the a few workspaces, and does some operations on the files and then write an excel sheet for each combination.
+% This code creates specific file names, searches for them in a few workspaces, does some operations on the files, and then write an excel sheet for each combination.
 
 %% Rainfall at 19 locations - .xls sheets - Time Series:
 
