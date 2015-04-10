@@ -1,4 +1,5 @@
 %% ######################           STREAMFLOW          ######################
+% This script takes a matlab file [array] as an input and makes box plots, CDFs and FDC curves for the time series
 % Take in the file names 
 clc; 
 
